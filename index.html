@@ -1,732 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="km" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huokaingthara Bank x City Mall 50% OFF Promo</title>
+    <title data-i18n="appTitle">City Mall × Huokaingthara Bank 50% Off Promo</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- QRCode JS Library for dynamic QR generation -->
+    <!-- QRCode.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="bank.jpg">
-    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        hkbank: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                            800: '#0c4a6e',
-                            900: '#0a3652',
-                        },
-                        citymall: {
-                            gold: '#f59e0b',
-                            red: '#e11d48',
-                            darkred: '#be123c'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        bankGold: '#eab308',
+                        bankCyan: '#00f0ff',
+                        bankDark: '#030712'
                     }
                 }
             }
         }
     </script>
-    
-    <style>
-        /* Custom Styles & Utilities */
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        .khqr-border {
-            border-image: linear-gradient(135deg, #e11d48 0%, #0284c7 100%) 1;
-        }
-
-        .pulse-slow {
-            animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
 </head>
-<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-bankDark text-slate-100 min-h-screen font-sans selection:bg-amber-500 selection:text-slate-900">
 
-    <!-- Top Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Brand Logos -->
-                <div class="flex items-center space-x-3 sm:space-x-4">
-                    <!-- Huokaingthara Bank Logo Placeholder -->
-                    <div class="flex items-center space-x-2">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-hkbank-600 to-hkbank-900 flex items-center justify-center text-white font-black text-xl shadow-md">
-                            HK
-                        </div>
-                        <div class="hidden sm:block">
-                            <span class="block text-xs uppercase tracking-widest font-bold text-hkbank-600">Huokaingthara</span>
-                            <span class="block text-base font-extrabold text-slate-900 leading-none">BANK</span>
-                        </div>
-                    </div>
-                    
-                    <span class="text-slate-300 font-light text-2xl">×</span>
-                    
-                    <!-- City Mall Logo Placeholder -->
-                    <div class="flex items-center space-x-2">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-citymall-red to-citymall-gold flex items-center justify-center text-white font-extrabold text-lg shadow-md">
-                            <i class="fa-solid fa-bag-shopping"></i>
-                        </div>
-                        <div class="hidden sm:block">
-                            <span class="block text-xs uppercase tracking-widest font-bold text-citymall-red">Grand Festival</span>
-                            <span class="block text-base font-extrabold text-slate-900 leading-none">CITY MALL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Promo Banner Badge -->
-                <div class="hidden md:flex items-center bg-gradient-to-r from-red-500 to-amber-500 text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-sm animate-bounce">
-                    <i class="fa-solid fa-bolt mr-2"></i> 50% Instant Discount via KHQR
-                </div>
-
-                <!-- Cart Button -->
-                <button id="cart-toggle-btn" class="relative bg-slate-100 hover:bg-slate-200 text-slate-800 p-3 rounded-xl transition duration-200 flex items-center space-x-2">
-                    <i class="fa-solid fa-cart-shopping text-lg text-hkbank-700"></i>
-                    <span class="font-bold text-sm hidden sm:inline">Cart</span>
-                    <span id="cart-badge-count" class="bg-citymall-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                </button>
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                <i class="fa-solid fa-store text-slate-950 font-bold text-lg"></i>
             </div>
+            <div>
+                <h1 class="text-lg font-black tracking-wider text-amber-400">CITY MALL × HUOKAINGTHARA</h1>
+                <p class="text-xs text-cyan-400 font-mono" data-i18n="subHeader">50% OFF EXCLUSIVE BANK PROMO</p>
+            </div>
+        </div>
+
+        <!-- Controls: Language Switcher & Cart Toggle -->
+        <div class="flex items-center space-x-4">
+            <!-- Language Switcher -->
+            <div class="flex bg-slate-800 p-1 rounded-lg border border-slate-700">
+                <button onclick="setLanguage('km')" id="btn-km" class="px-3 py-1 text-xs font-bold rounded bg-amber-500 text-slate-950 transition-all">🇰🇭 ខ្មែរ</button>
+                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 text-xs font-bold rounded text-slate-400 hover:text-white transition-all">🇺🇸 EN</button>
+            </div>
+
+            <!-- Cart Trigger Button -->
+            <button onclick="toggleCartDrawer()" class="relative bg-slate-800 hover:bg-slate-700 border border-slate-700 p-2.5 rounded-xl flex items-center space-x-2 transition-all">
+                <i class="fa-solid fa-cart-shopping text-cyan-400 text-lg"></i>
+                <span id="cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-black text-xs w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+            </button>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
         
-        <!-- Hero Promotion Banner -->
-        <section class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-hkbank-900 via-hkbank-800 to-citymall-darkred text-white p-6 sm:p-10 mb-10 shadow-xl">
+        <!-- Hero Banner Section -->
+        <section class="relative rounded-2xl overflow-hidden mb-10 border border-amber-500/30 bg-gradient-to-r from-slate-900 via-slate-900/90 to-amber-950/40 p-6 lg:p-10 shadow-2xl">
             <div class="relative z-10 max-w-2xl">
-                <span class="inline-block bg-citymall-gold/20 text-citymall-gold border border-citymall-gold/40 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                    Exclusive Payment Partner Offer
+                <span class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-mono mb-4">
+                    <i class="fa-solid fa-bolt mr-1"></i> LIMITED TIME OFFER
                 </span>
-                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
-                    Pay with <span class="text-sky-400">Huokaingthara Bank</span> & Save <span class="text-amber-400">50% OFF!</span>
-                </h1>
-                <p class="text-slate-200 text-sm sm:text-base mb-6 leading-relaxed">
-                    Select your favorite items from City Mall partners. Scan and pay directly using Huokaingthara Bank Mobile app or KHQR to enjoy an instant 50% discount on your entire purchase total!
+                <h2 class="text-3xl lg:text-5xl font-black mb-4 tracking-tight" data-i18n="heroTitle">
+                    Get <span class="text-amber-400">50% OFF</span> All Payments with Huokaingthara Bank
+                </h2>
+                <p class="text-slate-400 text-sm lg:text-base mb-6" data-i18n="heroDesc">
+                    Shop your favorite electronics, fashion, dining, and lifestyle items at City Mall Supermarket and enjoy instant half-price savings at checkout!
                 </p>
-                <div class="flex flex-wrap gap-4 items-center">
-                    <a href="#products-section" class="bg-gradient-to-r from-citymall-red to-amber-500 hover:from-red-600 hover:to-amber-600 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition duration-200">
-                        Shop Promo Now
-                    </a>
-                    <div class="flex items-center space-x-2 text-xs text-slate-300">
-                        <i class="fa-solid fa-shield-halved text-emerald-400 text-base"></i>
-                        <span>Instant Auto-applied Discount at Checkout</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Decorative Graphics -->
-            <div class="absolute -right-10 -bottom-10 opacity-20 lg:opacity-40 pointer-events-none">
-                <i class="fa-solid fa-qrcode text-[240px] text-white"></i>
             </div>
         </section>
 
-        <!-- Product Filter & Search -->
-        <section id="products-section" class="mb-8">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900">City Mall Discount Catalog</h2>
-                    <p class="text-sm text-slate-500">Prices shown below reflect original price & 50% Huokaingthara Bank special discount</p>
-                </div>
-                
-                <!-- Category Tabs -->
-                <div class="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="category-filters">
-                    <button data-category="all" class="filter-btn active bg-hkbank-600 text-white px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition">All Deals</button>
-                    <button data-category="electronics" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition">Electronics</button>
-                    <button data-category="fashion" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition">Fashion</button>
-                    <button data-category="dining" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition">Dining & Cafe</button>
-                </div>
+        <!-- Search and Category Filters -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div class="relative flex-1 max-w-md">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                <input type="text" id="search-input" oninput="filterProducts()" data-i18n-placeholder="searchPlaceholder" placeholder="Search products..." class="w-full bg-slate-900 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-cyan-400 transition-all">
             </div>
-        </section>
 
-        <!-- Product Grid -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-grid">
-            <!-- Dynamic Product Cards Injected Here -->
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-lg bg-hkbank-600 text-white flex items-center justify-center font-bold">HK</div>
-                    <span class="text-white font-bold text-lg">Huokaingthara Bank Promotion Portal</span>
-                </div>
-                <div class="text-xs text-center md:text-right">
-                    <p>© 2026 Huokaingthara Bank Plc. & City Mall Shopping Center. All rights reserved.</p>
-                    <p class="mt-1 text-slate-500">Terms & Conditions apply for 50% KHQR discount. Maximum discount limits may apply.</p>
-                </div>
+            <div class="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0" id="category-filters">
+                <button onclick="setCategory('all')" data-category="all" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 transition-all whitespace-nowrap" data-i18n="catAll">All Items</button>
+                <button onclick="setCategory('electronics')" data-category="electronics" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all whitespace-nowrap" data-i18n="catElectronics">Electronics</button>
+                <button onclick="setCategory('fashion')" data-category="fashion" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all whitespace-nowrap" data-i18n="catFashion">Fashion</button>
+                <button onclick="setCategory('dining')" data-category="dining" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all whitespace-nowrap" data-i18n="catDining">Dining</button>
+                <button onclick="setCategory('lifestyle')" data-category="lifestyle" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all whitespace-nowrap" data-i18n="catLifestyle">Lifestyle</button>
             </div>
         </div>
-    </footer>
 
-    <!-- Slide-over Shopping Cart Drawer -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" id="cart-overlay"></div>
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </main>
 
-        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
-                
-                <!-- Drawer Header -->
-                <div class="p-6 bg-slate-900 text-white flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-basket-shopping text-xl text-citymall-gold"></i>
-                        <h2 class="text-lg font-bold">Your Promo Cart</h2>
-                    </div>
-                    <button id="close-cart-btn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+    <!-- Shopping Cart Slide-over Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-slate-900 border-l border-slate-800 flex flex-col shadow-2xl">
+                <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+                    <h3 class="text-lg font-bold flex items-center text-amber-400">
+                        <i class="fa-solid fa-cart-shopping mr-2"></i> <span data-i18n="cartTitle">Shopping Cart</span>
+                    </h3>
+                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white p-2">
                         <i class="fa-solid fa-xmark text-xl"></i>
                     </button>
                 </div>
-
-                <!-- Drawer Items List -->
-                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cart-items-container">
-                    <!-- Cart Empty State -->
-                    <div id="empty-cart-view" class="text-center py-12">
-                        <i class="fa-solid fa-cart-arrow-down text-5xl text-slate-300 mb-3"></i>
-                        <p class="text-slate-500 font-medium">Your cart is empty!</p>
-                        <p class="text-xs text-slate-400 mt-1">Select items from City Mall catalog to claim your 50% discount.</p>
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+                <div class="p-6 border-t border-slate-800 bg-slate-950/50 space-y-3">
+                    <div class="flex justify-between text-sm text-slate-400">
+                        <span data-i18n="subtotal">Subtotal</span>
+                        <span id="cart-subtotal">$0.00</span>
                     </div>
-
-                    <!-- Cart Dynamic Items -->
-                    <div id="cart-list" class="space-y-4"></div>
-                </div>
-
-                <!-- Payment Selection & Breakdown Footer -->
-                <div class="p-6 bg-slate-50 border-t border-slate-200 space-y-4">
-                    
-                    <!-- Payment Method Toggle / Notice -->
-                    <div class="bg-white border-2 border-hkbank-500 rounded-2xl p-4 shadow-sm relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-hkbank-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl">
-                            RECOMMENDED
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <input type="radio" checked id="pay-hkbank" name="payment_method" class="mt-1 text-hkbank-600 focus:ring-hkbank-500">
-                            <label for="pay-hkbank" class="cursor-pointer block text-xs">
-                                <span class="font-bold text-slate-900 text-sm block">Huokaingthara Bank KHQR Pay</span>
-                                <span class="text-emerald-600 font-bold block mt-0.5">
-                                    <i class="fa-solid fa-tags"></i> 50% Discount Special Applied
-                                </span>
-                            </label>
-                        </div>
+                    <div class="flex justify-between text-sm text-cyan-400">
+                        <span data-i18n="discount">Huokaingthara Bank Discount (50%)</span>
+                        <span id="cart-discount">-$0.00</span>
                     </div>
-
-                    <!-- Price Calculations -->
-                    <div class="space-y-2 text-sm pt-2">
-                        <div class="flex justify-between text-slate-600">
-                            <span>Subtotal (Standard Price):</span>
-                            <span id="summary-subtotal" class="font-semibold">$0.00</span>
-                        </div>
-                        <div class="flex justify-between text-emerald-600 font-semibold bg-emerald-50 p-2 rounded-lg">
-                            <span class="flex items-center">
-                                <i class="fa-solid fa-gift mr-1.5"></i> Huokaingthara 50% Off:
-                            </span>
-                            <span id="summary-discount">-$0.00</span>
-                        </div>
-                        <div class="flex justify-between text-base font-extrabold text-slate-900 pt-2 border-t border-slate-200">
-                            <span>Final Pay Amount:</span>
-                            <span id="summary-total" class="text-hkbank-700 text-xl">$0.00</span>
-                        </div>
+                    <div class="flex justify-between text-lg font-black text-amber-400 pt-2 border-t border-slate-800">
+                        <span data-i18n="totalPay">Total to Pay</span>
+                        <span id="cart-total">$0.00</span>
                     </div>
-
-                    <!-- Checkout Button -->
-                    <button id="checkout-btn" disabled class="w-full bg-slate-300 text-slate-500 font-bold py-3.5 rounded-xl transition duration-200 shadow-md flex items-center justify-center space-x-2 disabled:cursor-not-allowed">
-                        <span>Pay via Huokaingthara QR</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <button id="checkout-btn" onclick="openPaymentModal()" class="w-full mt-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-qrcode"></i>
+                        <span data-i18n="checkoutBtn">Pay with KHQR (50% Off)</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Huokaingthara Bank KHQR Payment Modal -->
-    <div id="payment-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden px-4">
-        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-md" id="modal-overlay"></div>
-
-        <div class="relative bg-white rounded-3xl max-w-sm w-full overflow-hidden shadow-2xl border border-slate-100 z-10 animate-fade-in">
-            
-            <!-- Modal Header (Banking Styling) -->
-            <div class="bg-gradient-to-r from-hkbank-800 to-hkbank-900 text-white p-5 text-center relative">
-                <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-300 hover:text-white">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+    <!-- KHQR Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 mb-2 border border-cyan-500/30">
+                    <i class="fa-solid fa-qrcode text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-amber-400" data-i18n="modalTitle">Huokaingthara Bank KHQR Payment</h3>
+                <p class="text-xs text-slate-400 mt-1">Scan using Huokaingthara Bank App or Bakong Mobile</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl flex flex-col items-center justify-center mb-6 shadow-inner">
+                <div id="qrcode" class="mb-3"></div>
+                <div class="text-slate-900 font-mono font-bold text-lg" id="modal-pay-amount">$0.00</div>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-6 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                <div><span data-i18n="modalTimerMsg">Expires in:</span> <span id="countdown-timer" class="text-amber-400 font-bold">05:00</span></div>
+                <div>Ref: <span id="txn-ref" class="text-cyan-400">HTB-CM-99281</span></div>
+            </div>
+            <div class="space-y-3">
+                <button id="simulate-pay-btn" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-3 rounded-xl transition-all shadow-lg shadow-cyan-500/20" data-i18n="simulateBtn">
+                    Simulate Successful Payment
                 </button>
-                <div class="inline-flex items-center space-x-2 mb-1">
-                    <div class="w-7 h-7 rounded-lg bg-white text-hkbank-800 flex items-center justify-center font-extrabold text-xs">HK</div>
-                    <span class="font-bold tracking-wide text-sm">Huokaingthara Bank</span>
-                </div>
-                <h3 class="text-xs uppercase tracking-widest text-sky-300 font-semibold">KHQR Merchant Payment</h3>
-            </div>
-
-            <!-- Modal Content -->
-            <div class="p-6 text-center space-y-4">
-                
-                <!-- Merchant Info & Price Display -->
-                <div>
-                    <span class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Merchant: City Mall Official</span>
-                    <div class="text-3xl font-extrabold text-slate-900 mt-1" id="qr-modal-amount">$0.00</div>
-                    <div class="inline-block bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full mt-1">
-                        <i class="fa-solid fa-check-circle mr-1"></i> 50% Bank Discount Included
-                    </div>
-                </div>
-
-                <!-- QR Code Display Box -->
-                <div class="relative bg-white p-4 rounded-2xl border-2 border-slate-200 inline-block shadow-inner">
-                    <!-- Dynamic Canvas/SVG Container -->
-                    <div id="qrcode-container" class="flex justify-center items-center w-48 h-48 mx-auto"></div>
-                    
-                    <!-- Center Logo Overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="bg-white p-1 rounded-full shadow-md border border-slate-100">
-                            <div class="w-8 h-8 rounded-full bg-hkbank-600 text-white flex items-center justify-center font-extrabold text-[10px]">
-                                HK
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Countdown & Instructions -->
-                <div class="space-y-1">
-                    <p class="text-xs text-slate-500">Scan using Huokaingthara Mobile App or any KHQR Supported Banking App</p>
-                    <div class="text-xs font-semibold text-slate-700">
-                        QR Code expires in: <span id="timer-display" class="text-citymall-red font-bold">05:00</span>
-                    </div>
-                    <p class="text-[11px] text-slate-400 font-mono">Ref: <span id="ref-number">HKB-8894028</span></p>
-                </div>
-
-                <!-- Simulated Action Buttons -->
-                <div class="pt-2 space-y-2">
-                    <button id="simulate-pay-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-lg transition duration-200 text-sm flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                        <span>Simulate Successful Scan Payment</span>
-                    </button>
-                    <button id="cancel-pay-btn" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold py-2.5 rounded-xl text-xs">
-                        Cancel Payment
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Footer Note -->
-            <div class="bg-slate-50 px-4 py-3 border-t border-slate-100 text-center">
-                <span class="text-[10px] text-slate-400">Secured by Huokaingthara Bank Payment Gateway 2.0</span>
+                <button onclick="closePaymentModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2.5 rounded-xl transition-all text-sm" data-i18n="cancelBtn">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Payment Success Confirmation Toast/Modal -->
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden px-4">
-        <div class="fixed inset-0 bg-slate-900/75 backdrop-blur-sm"></div>
-        <div class="relative bg-white rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl z-10 animate-bounce-short">
-            <div class="w-16 h-16 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center mx-auto text-3xl">
-                <i class="fa-solid fa-circle-check"></i>
+    <!-- Success Confirmation Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-md hidden">
+        <div class="bg-slate-900 border border-emerald-500/30 rounded-2xl max-w-md w-full p-6 text-center relative shadow-2xl">
+            <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900">Payment Successful!</h3>
-            <p class="text-xs text-slate-500">Your transaction has been confirmed by Huokaingthara Bank. You saved 50% with City Mall!</p>
-            <div class="bg-slate-50 p-3 rounded-xl text-left text-xs space-y-1">
-                <div class="flex justify-between"><span class="text-slate-400">Paid Amount:</span><span id="success-paid-amount" class="font-bold text-slate-800">$0.00</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Discount Saved:</span><span id="success-saved-amount" class="font-bold text-emerald-600">$0.00</span></div>
-                <div class="flex justify-between"><span class="text-slate-400">Status:</span><span class="font-bold text-emerald-600">Completed</span></div>
+            <h3 class="text-2xl font-black text-emerald-400 mb-2" data-i18n="successTitle">Payment Successful!</h3>
+            <p class="text-slate-400 text-sm mb-6">Thank you for shopping at City Mall with Huokaingthara Bank.</p>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left space-y-2 mb-6 text-sm">
+                <div class="flex justify-between">
+                    <span class="text-slate-400" data-i18n="successSaved">Total Saved (50% Promo):</span>
+                    <span id="success-saved-amount" class="text-cyan-400 font-bold">$0.00</span>
+                </div>
+                <div class="flex justify-between pt-2 border-t border-slate-800">
+                    <span class="text-slate-400" data-i18n="successPaid">Total Paid:</span>
+                    <span id="success-paid-amount" class="text-amber-400 font-black">$0.00</span>
+                </div>
             </div>
-            <button id="done-btn" class="w-full bg-hkbank-600 hover:bg-hkbank-700 text-white font-bold py-3 rounded-xl text-sm transition">
-                Back to Storefront
+            <button onclick="closeSuccessModal()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 rounded-xl transition-all" data-i18n="doneBtn">
+                Back to Shopping
             </button>
         </div>
     </div>
 
-    <!-- Application JavaScript Logic -->
-    <script>
-        // --- 1. Product Data Source ---
-        const PRODUCTS = [
-            {
-                id: 1,
-                name: "Wireless Noise-Canceling Headphones",
-                category: "electronics",
-                originalPrice: 120.00,
-                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60",
-                store: "City Tech Hub"
-            },
-            {
-                id: 2,
-                name: "Smart Watch Series 7 Edition",
-                category: "electronics",
-                originalPrice: 250.00,
-                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60",
-                store: "Digital World"
-            },
-            {
-                id: 3,
-                name: "Designer Leather Jacket",
-                category: "fashion",
-                originalPrice: 180.00,
-                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&auto=format&fit=crop&q=60",
-                store: "City Fashion Studio"
-            },
-            {
-                id: 4,
-                name: "Classic Running Sneakers",
-                category: "fashion",
-                originalPrice: 90.00,
-                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60",
-                store: "Urban Sports"
-            },
-            {
-                id: 5,
-                name: "Gourmet Coffee & Dessert Set for 2",
-                category: "dining",
-                originalPrice: 30.00,
-                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60",
-                store: "Grand Cafe City Mall"
-            },
-            {
-                id: 6,
-                name: "Premium Japanese Dining Voucher",
-                category: "dining",
-                originalPrice: 80.00,
-                image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500&auto=format&fit=crop&q=60",
-                store: "Sakura Restaurant"
-            },
-            {
-                id: 7,
-                name: "Minimalist Ergonomic Backpack",
-                category: "fashion",
-                originalPrice: 65.00,
-                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60",
-                store: "Travel Gear Co."
-            },
-            {
-                id: 8,
-                name: "Portable Bluetooth Speaker 20W",
-                category: "electronics",
-                originalPrice: 70.00,
-                image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&auto=format&fit=crop&q=60",
-                store: "City Tech Hub"
-            }
-        ];
-
-        // --- 2. Application State ---
-        let cart = [];
-        let timerInterval = null;
-        let qrCodeInstance = null;
-
-        // --- 3. DOM Elements ---
-        const productGrid = document.getElementById('product-grid');
-        const cartToggleBtn = document.getElementById('cart-toggle-btn');
-        const closeCartBtn = document.getElementById('close-cart-btn');
-        const cartDrawer = document.getElementById('cart-drawer');
-        const cartOverlay = document.getElementById('cart-overlay');
-        const cartBadgeCount = document.getElementById('cart-badge-count');
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartList = document.getElementById('cart-list');
-        const emptyCartView = document.getElementById('empty-cart-view');
-        
-        const summarySubtotal = document.getElementById('summary-subtotal');
-        const summaryDiscount = document.getElementById('summary-discount');
-        const summaryTotal = document.getElementById('summary-total');
-        const checkoutBtn = document.getElementById('checkout-btn');
-
-        const paymentModal = document.getElementById('payment-modal');
-        const modalOverlay = document.getElementById('modal-overlay');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const cancelPayBtn = document.getElementById('cancel-pay-btn');
-        const simulatePayBtn = document.getElementById('simulate-pay-btn');
-        const qrModalAmount = document.getElementById('qr-modal-amount');
-        const timerDisplay = document.getElementById('timer-display');
-        const refNumber = document.getElementById('ref-number');
-
-        const successModal = document.getElementById('success-modal');
-        const doneBtn = document.getElementById('done-btn');
-        const successPaidAmount = document.getElementById('success-paid-amount');
-        const successSavedAmount = document.getElementById('success-saved-amount');
-
-        // --- 4. Render Functions ---
-
-        // Render Product Cards
-        function renderProducts(category = 'all') {
-            productGrid.innerHTML = '';
-            
-            const filteredProducts = category === 'all' 
-                ? PRODUCTS 
-                : PRODUCTS.filter(p => p.category === category);
-
-            filteredProducts.forEach(product => {
-                const discountedPrice = (product.originalPrice * 0.5).toFixed(2);
-                
-                const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between group";
-                card.innerHTML = `
-                    <div class="relative overflow-hidden aspect-video bg-slate-100">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" onerror="this.src='https://placehold.co/500x300/0284c7/ffffff?text=City+Mall+Product'">
-                        <div class="absolute top-3 left-3 bg-citymall-red text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1">
-                            <i class="fa-solid fa-tags"></i>
-                            <span>50% OFF HK BANK</span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-1">${product.store}</span>
-                            <h3 class="font-bold text-slate-900 text-base leading-snug mb-2">${product.name}</h3>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                            <div>
-                                <div class="text-xs text-slate-400 line-through">$${product.originalPrice.toFixed(2)}</div>
-                                <div class="text-lg font-extrabold text-hkbank-700">$${discountedPrice}</div>
-                            </div>
-                            <button onclick="addToCart(${product.id})" class="bg-hkbank-50 hover:bg-hkbank-600 hover:text-white text-hkbank-700 p-2.5 rounded-xl transition duration-200">
-                                <i class="fa-solid fa-plus text-base"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                productGrid.appendChild(card);
-            });
-        }
-
-        // Render Cart Contents & Dynamic Calculation
-        function updateCartUI() {
-            const totalItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartBadgeCount.textContent = totalItemCount;
-
-            if (cart.length === 0) {
-                emptyCartView.classList.remove('hidden');
-                cartList.innerHTML = '';
-                checkoutBtn.disabled = true;
-                checkoutBtn.className = "w-full bg-slate-200 text-slate-400 font-bold py-3.5 rounded-xl transition duration-200 shadow-none flex items-center justify-center space-x-2 cursor-not-allowed";
-                
-                summarySubtotal.textContent = "$0.00";
-                summaryDiscount.textContent = "-$0.00";
-                summaryTotal.textContent = "$0.00";
-                return;
-            }
-
-            emptyCartView.classList.add('hidden');
-            checkoutBtn.disabled = false;
-            checkoutBtn.className = "w-full bg-gradient-to-r from-hkbank-600 to-citymall-red hover:from-hkbank-700 hover:to-citymall-darkred text-white font-bold py-3.5 rounded-xl transition duration-200 shadow-lg flex items-center justify-center space-x-2 cursor-pointer";
-
-            // Render Cart List
-            cartList.innerHTML = '';
-            let subtotal = 0;
-
-            cart.forEach(item => {
-                const itemSubtotal = item.originalPrice * item.quantity;
-                subtotal += itemSubtotal;
-
-                const cartItemEl = document.createElement('div');
-                cartItemEl.className = "flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200 shadow-sm";
-                cartItemEl.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover bg-slate-100">
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-xs line-clamp-1">${item.name}</h4>
-                            <span class="text-[11px] text-slate-400 font-medium">$${item.originalPrice.toFixed(2)} / item</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div class="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
-                            <button onclick="changeQuantity(${item.id}, -1)" class="px-2 py-0.5 text-xs text-slate-600 hover:bg-slate-200">-</button>
-                            <span class="px-2 text-xs font-bold text-slate-800">${item.quantity}</span>
-                            <button onclick="changeQuantity(${item.id}, 1)" class="px-2 py-0.5 text-xs text-slate-600 hover:bg-slate-200">+</button>
-                        </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-red-500 text-xs">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </div>
-                `;
-                cartList.appendChild(cartItemEl);
-            });
-
-            // Calculate 50% Huokaingthara Bank Discount
-            const discount = subtotal * 0.5;
-            const finalTotal = subtotal - discount;
-
-            summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
-            summaryDiscount.textContent = `-$${discount.toFixed(2)}`;
-            summaryTotal.textContent = `$${finalTotal.toFixed(2)}`;
-        }
-
-        // --- 5. Cart Actions ---
-        window.addToCart = function(productId) {
-            const product = PRODUCTS.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-
-            updateCartUI();
-            openCart();
-        };
-
-        window.changeQuantity = function(productId, delta) {
-            const item = cart.find(i => i.id === productId);
-            if (!item) return;
-
-            item.quantity += delta;
-            if (item.quantity <= 0) {
-                cart = cart.filter(i => i.id !== productId);
-            }
-            updateCartUI();
-        };
-
-        window.removeFromCart = function(productId) {
-            cart = cart.filter(i => i.id !== productId);
-            updateCartUI();
-        };
-
-        // --- 6. Drawer Toggle Handlers ---
-        function openCart() {
-            cartDrawer.classList.remove('hidden');
-        }
-
-        function closeCart() {
-            cartDrawer.classList.add('hidden');
-        }
-
-        cartToggleBtn.addEventListener('click', openCart);
-        closeCartBtn.addEventListener('click', closeCart);
-        cartOverlay.addEventListener('click', closeCart);
-
-        // Filter Functionality
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('bg-hkbank-600', 'text-white');
-                    b.classList.add('bg-white', 'text-slate-600');
-                });
-                e.target.classList.remove('bg-white', 'text-slate-600');
-                e.target.classList.add('bg-hkbank-600', 'text-white');
-
-                renderProducts(e.target.getAttribute('data-category'));
-            });
-        });
-
-        // --- 7. QR Payment Modal Logic ---
-        function generateQRCode(text) {
-            const container = document.getElementById('qrcode-container');
-            container.innerHTML = ''; // Clear previous QR
-            
-            qrCodeInstance = new QRCode(container, {
-                text: text,
-                width: 180,
-                height: 180,
-                colorDark : "#0a3652",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        }
-
-        function startCountdown(durationSeconds) {
-            let timer = durationSeconds;
-            clearInterval(timerInterval);
-
-            timerInterval = setInterval(() => {
-                const minutes = parseInt(timer / 60, 10);
-                const seconds = parseInt(timer % 60, 10);
-
-                const formattedMin = minutes < 10 ? "0" + minutes : minutes;
-                const formattedSec = seconds < 10 ? "0" + seconds : seconds;
-
-                timerDisplay.textContent = `${formattedMin}:${formattedSec}`;
-
-                if (--timer < 0) {
-                    clearInterval(timerInterval);
-                    timerDisplay.textContent = "EXPIRED";
-                    alert("QR Payment session expired. Please try again.");
-                    closePaymentModal();
-                }
-            }, 1000);
-        }
-
-        function openPaymentModal() {
-            closeCart();
-            
-            const subtotal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
-            const finalTotal = (subtotal * 0.5).toFixed(2);
-            
-            qrModalAmount.textContent = `$${finalTotal}`;
-            refNumber.textContent = 'HKB-' + Math.floor(1000000 + Math.random() * 9000000);
-
-            // Generate Simulated KHQR Data String
-            const khqrPayload = `00020101021238580016A00000077500010108HKBANKPP0208HKB12345520459995303840540${finalTotal}5802KH5917CITY MALL PROMO6010PHNOM PENH62070703D016304`;
-            
-            generateQRCode(khqrPayload);
-            startCountdown(300); // 5 minute countdown
-            
-            paymentModal.classList.remove('hidden');
-        }
-
-        function closePaymentModal() {
-            paymentModal.classList.add('hidden');
-            clearInterval(timerInterval);
-        }
-
-        checkoutBtn.addEventListener('click', openPaymentModal);
-        closeModalBtn.addEventListener('click', closePaymentModal);
-        cancelPayBtn.addEventListener('click', closePaymentModal);
-        modalOverlay.addEventListener('click', closePaymentModal);
-
-        // --- 8. Simulated Successful Payment ---
-        simulatePayBtn.addEventListener('click', () => {
-            const subtotal = cart.reduce((sum, item) => sum + (item.originalPrice * item.quantity), 0);
-            const saved = (subtotal * 0.5).toFixed(2);
-            const paid = (subtotal * 0.5).toFixed(2);
-
-            closePaymentModal();
-
-            // Populate & Open Success Modal
-            successPaidAmount.textContent = `$${paid}`;
-            successSavedAmount.textContent = `$${saved}`;
-            successModal.classList.remove('hidden');
-
-            // Reset Cart
-            cart = [];
-            updateCartUI();
-        });
-
-        doneBtn.addEventListener('click', () => {
-            successModal.classList.add('hidden');
-        });
-
-        // Initialize App
-        renderProducts();
-        updateCartUI();
-    </script>
+    <!-- Script File -->
+    <script src="app.js"></script>
     <script src="ultra_secure_mode.js"></script>
     <script src="music.js"></script>
 </body>
