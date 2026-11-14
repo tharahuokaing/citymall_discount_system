@@ -98,7 +98,8 @@ const products = [
     { id: 5, name: "Premium Artisan Coffee Beans (1kg)", category: "dining", originalPrice: 30.00, image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80" },
     { id: 6, name: "Organic Gourmet Olive Oil", category: "dining", originalPrice: 24.00, image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80" },
     { id: 7, name: "Ergonomic Office Desk Lamp", category: "lifestyle", originalPrice: 45.00, image: "https://images.unsplash.com/photo-1534349762230-e8cadf3afbac?auto=format&fit=crop&w=600&q=80" },
-    { id: 8, name: "Stainless Steel Insulated Tumbler", category: "lifestyle", originalPrice: 28.00, image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80" }
+    { id: 8, name: "Stainless Steel Insulated Tumbler", category: "lifestyle", originalPrice: 28.00, image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80" },
+    { id: 9, name: "AR Smart Glasses", category: "electronics", originalPrice: 245.00, image: "https://i5.walmartimages.com/seo/150-HD-Display-AR-Smart-Glasses-Built-in-Tracking-Portable-Immersive-VR-Headset-Compatible-Phones-Tablets-Laptops-Movies-Gaming-Travel-Presentations_f4cc49e3-7041-4598-9b0b-91f27530917b.45d982a69a59e9797d6e540fbeb606bf.jpeg" }
 ];
 
 let cart = [];
